@@ -1,0 +1,407 @@
+<div id="content-page" class="content-page">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-lg-8">
+            <div class="row">
+               <div class="col-sm-6 col-lg-6 col-xl-3">
+                  <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                     <div class="iq-card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                           <div class="iq-cart-text text-capitalize">
+                              <p class="mb-0">
+                                 Total Arrests 2013/19
+                              </p>
+                           </div>
+                           <div class="icon iq-icon-box-top rounded-circle bg-primary">
+                              <i class="las la-users"></i>
+                           </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between mt-3">
+                           <h4 class=" mb-0">{{totalArrests | number}}</h4>
+                           <p class="mb-0 text-primary"><span></span>{{( totalArrests / 67200000 ) | percent}}</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-lg-6 col-xl-3">
+                  <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                     <div class="iq-card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                           <div class="iq-cart-text text-capitalize">
+                              <p class="mb-0 font-size-14">
+                                 Total Arrests 2018/19
+                              </p>
+                           </div>
+                           <div class="icon iq-icon-box-top rounded-circle bg-warning">
+                              <i class="las la-users"></i>
+                           </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between mt-3">
+                           <h4 class=" mb-0">{{arrests2018 | number}}</h4>
+                           <p class="mb-0 text-warning"><span><i class="fa fa-caret-up mr-2"></i></span>{{(arrests2018 /
+                              totalArrests) | percent}}</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-lg-6 col-xl-3">
+                  <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                     <div class="iq-card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                           <div class="iq-cart-text text-capitalize">
+                              <p class="mb-0 font-size-14">
+                                 Total Male 2018/19
+                              </p>
+                           </div>
+                           <div class="icon iq-icon-box-top rounded-circle bg-info">
+                              <i class="lar la-user"></i>
+                           </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between mt-3">
+                           <h4 class=" mb-0">{{totalMale2018}}</h4>
+                           <p class="mb-0 text-info"><span><i
+                                    class="fa fa-caret-up mr-2"></i></span>{{totalMale2018/arrests2018 | percent}}</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-lg-6 col-xl-3">
+                  <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                     <div class="iq-card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                           <div class="iq-cart-text text-uppercase">
+                              <p class="mb-0 font-size-14">
+                                 Total Female 2018/19
+                              </p>
+                           </div>
+                           <div class="icon iq-icon-box-top rounded-circle bg-pink">
+                              <i class="lar la-user"></i>
+                           </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between mt-3">
+                           <h4 class=" mb-0">{{totalFemale2018}}</h4>
+                           <p class="mb-0 text-pink"><span><i
+                                    class="fa fa-caret-up mr-2"></i></span>{{totalFemale2018/arrests2018 | percent}}</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="iq-card mt-5">
+               <div class="iq-card-header d-flex justify-content-between align-items-center">
+                  <div class="iq-header-title">
+                     <h4 class="card-title">Arrests by Area 2018/19 </h4>
+                  </div>
+                  <div id="topRated-item-slick-arrow" class="slick-aerrow-block"></div>
+               </div>
+               <div class="iq-card-body">
+                  <ul ngClass="topRated" class="list-unstyled row mb-0">
+                     <li *ngFor="let arrest of arrestsByArea2018 " class="col-sm-6 col-lg-4 col-xl-3 iq-rated-box">
+                        <div class="iq-card mb-0">
+                           <div class="iq-card-body p-0">
+                              <div class="iq-feature-list">
+                                 <h6 class="font-weight-600 mb-0"><i
+                                       class="las la-landmark">&nbsp;</i>{{arrest.geography}}</h6>
+                                 <p class="mb-0 mt-2"><i class="fa fa-star text-primary"></i> {{arrest.numberOfArrests}}
+                                 </p>
+                                 <div class="d-flex align-items-center my-2">
+                                    <p class="mb-0 mr-2"><i class="lar la-user mr-1"></i>{{arrest.gender}}
+                                    </p>
+                                    <p class="mb-0 "><i class="las la-calendar-times ml-2"></i>{{arrest.time}}</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-4">
+            <div class="iq-card iq-card iq-card-block iq-card-stretch iq-card-height">
+               <div class="iq-card-header">
+                  <div class="iq-header-title">
+                     <h4 class="card-title text-center">Arrests by Age 2018/19</h4>
+                  </div>
+               </div>
+               <div class="iq-card-body pb-0">
+
+                  <div id="view-chart-01">
+
+                  </div>
+
+                  <div class="row mt-1">
+                     <div class="col-sm-6 col-md-3 col-lg-6 iq-user-list">
+                        <div class="iq-card">
+                           <div class="iq-card-body">
+                              <div class="media align-items-center">
+                                 <div class="iq-user-box bg-primary"></div>
+                                 <div class="media-body text-white">
+                                    <p class="mb-0 font-size-14 line-height">Age <br>
+                                       10-17
+                                    </p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-sm-6 col-md-3 col-lg-6 iq-user-list">
+                        <div class="iq-card">
+                           <div class="iq-card-body">
+                              <div class="media align-items-center">
+                                 <div class="iq-user-box bg-warning"></div>
+                                 <div class="media-body text-white">
+                                    <p class="mb-0 font-size-14 line-height">Age <br>
+                                       18-20
+                                    </p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-sm-6 col-md-3 col-lg-6 iq-user-list">
+                        <div class="iq-card">
+                           <div class="iq-card-body">
+                              <div class="media align-items-center">
+                                 <div class="iq-user-box bg-info"></div>
+                                 <div class="media-body text-white">
+                                    <p class="mb-0 font-size-14 line-height">Age<br>
+                                       21 and Over
+                                    </p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-sm-6 col-md-3 col-lg-6 iq-user-list">
+                        <div class="iq-card">
+                           <div class="iq-card-body">
+                              <div class="media align-items-center">
+                                 <div class="iq-user-box bg-danger"></div>
+                                 <div class="media-body text-white">
+                                    <p class="mb-0 font-size-14 line-height">Age <br>
+                                       Under 10
+                                    </p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-sm-12  col-lg-4">
+            <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+               <div class="iq-card-header d-flex align-items-center justify-content-between">
+                  <div class="iq-header-title">
+                     <h4 class="card-title">Arrests By Gender 2018/19</h4>
+                  </div>
+               </div>
+               <div class="iq-card-body p-0">
+
+                  <div id="view-chart-02"></div>
+                  <div class="text-center">
+                     <p><i class='las la-user text-info'>&nbsp;</i><small class="text-info">Male</small></p>
+                     <p><i class='las la-user text-pink'>&nbsp;</i><small class="text-pink">Female</small></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-8">
+            <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+               <div class="iq-card-header d-flex align-items-center justify-content-between">
+                  <div class="iq-header-title">
+                     <h4 class="card-title">Arrests by Ethnicity 2018/19</h4>
+                  </div>
+               </div>
+               <div class="iq-card-body row align-items-center">
+                  <div class="col-lg-7">
+                     <div class="row list-unstyled mb-0 pb-0">
+                        <div class="col-sm-6 col-md-4 col-lg-6 mb-3">
+                           <div class="media align-items-center">
+                              <div class="iq-icon-box-view rounded mr-3  iq-bg-danger"><i
+                                    class="las la-globe-asia font-size-32"></i></div>
+                              <div class="media-body text-white">
+                                 <h6 class="mb-0 font-size-14 line-height">Asian</h6>
+                                 <small class="text-primary mb-0">{{Asian}}</small>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-6 mb-3">
+                           <div class="media align-items-center">
+                              <div class="iq-icon-box-view rounded mr-3  iq-bg-danger"><i
+                                    class="las la-globe-asia font-size-32"></i></div>
+                              <div class="media-body text-white">
+                                 <h6 class="mb-0 font-size-14 line-height">Bangladeshi</h6>
+                                 <small class="text-primary mb-0">{{Bangladeshi}}</small>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-6 mb-3">
+                           <div class="media align-items-center">
+                              <div class="iq-icon-box-view rounded mr-3  iq-bg-danger"><i
+                                    class="las la-globe-africa font-size-32"></i></div>
+                              <div class="media-body text-white">
+                                 <h6 class="mb-0 font-size-14 line-height">Black</h6>
+                                 <small class="text-danger mb-0">{{Black}}</small>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-6 mb-3">
+                           <div class="media align-items-center">
+                              <div class="iq-icon-box-view rounded mr-3 iq-bg-danger"><i
+                                    class="las la-globe-asia  font-size-32"></i></div>
+                              <div class="media-body text-white">
+                                 <h6 class="mb-0 font-size-14 line-height">Chinese</h6>
+                                 <small class="text-primary mb-0">{{Chinese}}</small>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-6 mb-3">
+                           <div class="media align-items-center">
+                              <div class="iq-icon-box-view rounded mr-3  iq-bg-danger"><i
+                                    class="las la-globe-asia  font-size-32"></i></div>
+                              <div class="media-body text-white">
+                                 <p class="mb-0 font-size-14 line-height">Indian</p>
+                                 <small class="text-primary mb-0">{{Indian}}</small>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-6 mb-3">
+                           <div class="media align-items-center">
+                              <div class="iq-icon-box-view rounded mr-3   iq-bg-danger"><i
+                                    class="las la-globe  font-size-32"></i></div>
+                              <div class="media-body text-white">
+                                 <p class="mb-0 font-size-14 line-height">Mixed</p>
+                                 <small class="text-info mb-0">{{Mixed}}</small>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-6 mb-3">
+                           <div class="media align-items-center">
+                              <div class="iq-icon-box-view rounded mr-3  iq-bg-danger"><i
+                                    class="las la-globe-asia  font-size-32"></i></div>
+                              <div class="media-body text-white">
+                                 <p class="mb-0 font-size-14 line-height">Pakistani</p>
+                                 <small class="text-primary mb-0">{{Pakistani}}</small>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-6 mb-lg-0 mb-3">
+                           <div class="media align-items-center mb-lg-0 mb-3">
+                              <div class="iq-icon-box-view rounded mr-3 iq-bg-danger"><i
+                                    class="las la-globe-europe font-size-32"></i></div>
+                              <div class="media-body text-white">
+                                 <p class="mb-0 font-size-14 line-height">White</p>
+                                 <small class="text-warning mb-0">{{White}}</small>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-6  mb-lg-0 mb-3">
+                           <div class="media align-items-center">
+                              <div class="iq-icon-box-view rounded mr-3 iq-bg-danger"><i
+                                    class="las la-globe  font-size-32"></i></div>
+                              <div class="media-body text-white">
+                                 <p class="mb-0 font-size-14 line-height">Any Other</p>
+                                 <small class="text-danger mb-0">{{AnyOther}}</small>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-5">
+                     <div id="view-chart-03" class="view-cahrt-02"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-sm-12">
+            <div class="iq-card">
+               <div class="iq-card-header d-flex justify-content-between">
+                  <div class="iq-header-title">
+                     <h4 class="card-title">List with Arrests 2013/19</h4>
+                  </div>
+                  <div class="iq-card-header-toolbar d-flex align-items-center seasons">
+                     <div class="iq-custom-select d-inline-block sea-epi s-margin">
+                        <div class="iq-search-bar ml-auto mb-4">
+                           <div class="searchbox">
+                              <input type="text" class="text search-input" placeholder="Search year..." name="time"
+                                 [(ngModel)]="time" (ngModelChange)="Search()">
+                              <span class="search-link" href="#"><i class="ri-search-line"></i></span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="iq-card-body">
+                  <div class="table-responsive">
+                     <table class="table movie_table" style="width:100%">
+
+                        <thead>
+                           <tr>
+                              <th (click)="sort('geography')">Geography&nbsp;<i
+                                    class="btn-sm btn-outline-primary fa fa-sort"></i>
+                              </th>
+                              <th (click)="sort('ethnicity')">Ethnicity&nbsp;<i
+                                    class="btn-sm btn-outline-primary fa fa-sort"></i></th>
+                              <th (click)="sort('gender')">Gender&nbsp;<i
+                                    class="btn-sm btn-outline-primary fa fa-sort"></i></th>
+                              <th (click)="sort('ageGroup')">AgeGroup&nbsp;<i
+                                    class="btn-sm btn-outline-primary fa fa-sort"></i></th>
+                              <th (click)="sort('numberOfArrests')">Number Of Arrests&nbsp;<i
+                                    class="btn-sm btn-outline-primary fa fa-sort"></i></th>
+                              <th (click)="sort('time')">Financial Year&nbsp;<i
+                                    class="btn-sm btn-outline-primary fa fa-sort"></i></th>
+                           </tr>
+                        </thead>
+
+                        <tbody *ngIf="Arrests && Arrests.length ; else noData;">
+                           <tr *ngFor="let arrest of FilteredArrests | orderBy:key:reverse | paginate:{itemsPerPage:5,currentPage:p}">
+                              <td>
+                                 <div class="media align-items-center">
+                                    <div class="media-body text-white text-left ml-3">
+                                       <i class="lar la-dove"></i>
+                                       <p class="mb-0">{{arrest.geography}}</p>
+                                    </div>
+                                 </div>
+                              </td>
+                              <td>{{arrest.ethnicity}}</td>
+                              <td><i class="lar la-genderless"></i>{{arrest.gender}}</td>
+                              <td>
+                                 <i class="lar la-users "></i>{{arrest.ageGroup}}
+                              </td>
+                              <td>{{arrest.numberOfArrests}}</td>
+                              <td><i class="lar la-calendar"></i>{{arrest.time}}</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <div class="pull-right mt-5">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+    <!--IF no Data-->
+ <ng-template #noData>
+   <tbody>
+      <tr>
+         <td colspan="8">
+            No data availabe in this table
+         </td>
+      </tr>
+   </tbody>
+</ng-template>
+
+<ng-template #Loader>
+   <img src="../../../../assets/Images/page-load-loader.gif">
+</ng-template>
+
+</div>

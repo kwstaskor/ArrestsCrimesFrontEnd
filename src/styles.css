@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+@import '../src/Css/bootstrap.min.css';
+@import '../src/Css/dataTables.bootstrap4.min.css';
+@import "../src/Css/typography.css";
+@import '../src/Css/style.css';
+@import '../src/Css/responsive.css';
+@import "../src/Css/dark.css";
+@import '../src/Css/developer.css';
+@import '../src/Css/dripicons.css';
+@import '../src/Css/flatpickr.min.css';
+@import "../src/Css/fontawesome.css";
+@import "../src/Css/ionicons.min.css";
+@import "../src/Css/line-awesome.min.css"; 
+@import "../src/Css/magnific-popup.css";
+@import "../src/Css/owl.carousel.min.css";
+@import "../src/Css/remixicon.css";
+@import "../src/Css/select2.min.css";
+@import "../src/Css/select2-bootstrap4.min.css";
+@import "../src/Css/slick.css";
+@import "../src/Css/slick-theme.css"; 
+@import "../src/Css/variable.css";
+
+.crudBtn{
+ cursor: pointer;
+}

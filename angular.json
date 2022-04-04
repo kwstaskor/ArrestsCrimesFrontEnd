@@ -29,7 +29,10 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/Js/chart-custom.js",
+              "src/Js/custom.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -96,7 +99,10 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/Js/chart-custom.js",
+              "src/Js/custom.js"
+            ]
           }
         }
       }
