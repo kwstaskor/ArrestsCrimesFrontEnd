@@ -6,4 +6,4 @@ Angular Front End for https://arrestscrimesuk.azurewebsites.net/index.html
 
 Deployed in Firebase https://global-crimecharts.web.app/signin .
 
-Done for university project regarding Application Development
+Done for university module regarding Application Development
