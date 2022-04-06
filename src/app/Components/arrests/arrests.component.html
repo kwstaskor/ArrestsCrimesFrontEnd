@@ -1,4 +1,4 @@
-<div id="content-page" class="content-page">
+<div id="content-page" class="content-page" >
    <div class="container-fluid">
       <div class="row">
          <div class="col-lg-8">
@@ -17,8 +17,8 @@
                            </div>
                         </div>
                         <div class="d-flex align-items-center justify-content-between mt-3">
-                           <h4 class=" mb-0">{{totalArrests | number}}</h4>
-                           <p class="mb-0 text-primary"><span></span>{{( totalArrests / 67200000 ) | percent}}</p>
+                           <h4 class=" mb-0">{{totalArrests|number}}</h4>
+                           <p class="mb-0 text-primary"><span></span>{{totalArrests / 67000000 | percent}}</p>
                         </div>
                      </div>
                   </div>
@@ -29,7 +29,7 @@
                         <div class="d-flex align-items-center justify-content-between">
                            <div class="iq-cart-text text-capitalize">
                               <p class="mb-0 font-size-14">
-                                 Total Arrests 2018/19
+                                 Total Arrests {{year}}
                               </p>
                            </div>
                            <div class="icon iq-icon-box-top rounded-circle bg-warning">
@@ -37,8 +37,8 @@
                            </div>
                         </div>
                         <div class="d-flex align-items-center justify-content-between mt-3">
-                           <h4 class=" mb-0">{{arrests2018 | number}}</h4>
-                           <p class="mb-0 text-warning"><span><i class="fa fa-caret-up mr-2"></i></span>{{(arrests2018 /
+                           <h4 class=" mb-0">{{currentYearArrests | number}}</h4>
+                           <p class="mb-0 text-warning"><span><i class="fa fa-caret-up mr-2"></i></span>{{(currentYearArrests /
                               totalArrests) | percent}}</p>
                         </div>
                      </div>
@@ -50,7 +50,7 @@
                         <div class="d-flex align-items-center justify-content-between">
                            <div class="iq-cart-text text-capitalize">
                               <p class="mb-0 font-size-14">
-                                 Total Male 2018/19
+                                 Total Male {{year}}
                               </p>
                            </div>
                            <div class="icon iq-icon-box-top rounded-circle bg-info">
@@ -60,7 +60,7 @@
                         <div class="d-flex align-items-center justify-content-between mt-3">
                            <h4 class=" mb-0">{{totalMale2018}}</h4>
                            <p class="mb-0 text-info"><span><i
-                                    class="fa fa-caret-up mr-2"></i></span>{{totalMale2018/arrests2018 | percent}}</p>
+                                    class="fa fa-caret-up mr-2"></i></span>{{totalMale2018/currentYearArrests | percent}}</p>
                         </div>
                      </div>
                   </div>
@@ -71,7 +71,7 @@
                         <div class="d-flex align-items-center justify-content-between">
                            <div class="iq-cart-text text-uppercase">
                               <p class="mb-0 font-size-14">
-                                 Total Female 2018/19
+                                 Total Female {{year}}
                               </p>
                            </div>
                            <div class="icon iq-icon-box-top rounded-circle bg-pink">
@@ -81,7 +81,7 @@
                         <div class="d-flex align-items-center justify-content-between mt-3">
                            <h4 class=" mb-0">{{totalFemale2018}}</h4>
                            <p class="mb-0 text-pink"><span><i
-                                    class="fa fa-caret-up mr-2"></i></span>{{totalFemale2018/arrests2018 | percent}}</p>
+                                    class="fa fa-caret-up mr-2"></i></span>{{totalFemale2018/currentYearArrests | percent}}</p>
                         </div>
                      </div>
                   </div>
@@ -90,7 +90,7 @@
             <div class="iq-card mt-5">
                <div class="iq-card-header d-flex justify-content-between align-items-center">
                   <div class="iq-header-title">
-                     <h4 class="card-title">Arrests by Area 2018/19 </h4>
+                     <h4 class="card-title">Arrests by Area {{year}} </h4>
                   </div>
                   <div id="topRated-item-slick-arrow" class="slick-aerrow-block"></div>
                </div>
@@ -122,7 +122,7 @@
             <div class="iq-card iq-card iq-card-block iq-card-stretch iq-card-height">
                <div class="iq-card-header">
                   <div class="iq-header-title">
-                     <h4 class="card-title text-center">Arrests by Age 2018/19</h4>
+                     <h4 class="card-title text-center">Arrests by Age {{year}}</h4>
                   </div>
                </div>
                <div class="iq-card-body pb-0">
@@ -198,7 +198,7 @@
             <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                <div class="iq-card-header d-flex align-items-center justify-content-between">
                   <div class="iq-header-title">
-                     <h4 class="card-title">Arrests By Gender 2018/19</h4>
+                     <h4 class="card-title">Arrests By Gender {{year}}</h4>
                   </div>
                </div>
                <div class="iq-card-body p-0">
@@ -215,7 +215,7 @@
             <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                <div class="iq-card-header d-flex align-items-center justify-content-between">
                   <div class="iq-header-title">
-                     <h4 class="card-title">Arrests by Ethnicity 2018/19</h4>
+                     <h4 class="card-title">Arrests by Ethnicity {{year}}</h4>
                   </div>
                </div>
                <div class="iq-card-body row align-items-center">
@@ -323,14 +323,25 @@
             <div class="iq-card">
                <div class="iq-card-header d-flex justify-content-between">
                   <div class="iq-header-title">
-                     <h4 class="card-title">List with Arrests 2013/19</h4>
+                     <h4 class="card-title">List with Arrests {{year}}</h4>
+                  </div>
+                  <div class="col-md-6 form-group">
+                     <select class="form-control" [(ngModel)]="year" (ngModelChange)="ReadArrests()" id="year">
+                        <option disabled="">Choose Year</option>
+                        <option>2018</option>
+                        <option>2017</option>
+                        <option>2016</option>
+                        <option>2015</option>
+                        <option>2014</option>
+                        <option>2013</option>
+                     </select>
                   </div>
                   <div class="iq-card-header-toolbar d-flex align-items-center seasons">
                      <div class="iq-custom-select d-inline-block sea-epi s-margin">
                         <div class="iq-search-bar ml-auto mb-4">
                            <div class="searchbox">
-                              <input type="text" class="text search-input" placeholder="Search year..." name="time"
-                                 [(ngModel)]="time" (ngModelChange)="Search()">
+                              <input type="text" class="text search-input" placeholder="Search Geography..." name="time"
+                                 [(ngModel)]="geography" (ngModelChange)="Search()">
                               <span class="search-link" href="#"><i class="ri-search-line"></i></span>
                            </div>
                         </div>
@@ -360,7 +371,8 @@
                         </thead>
 
                         <tbody *ngIf="Arrests && Arrests.length ; else noData;">
-                           <tr *ngFor="let arrest of FilteredArrests | orderBy:key:reverse | paginate:{itemsPerPage:5,currentPage:p}">
+                           <tr
+                              *ngFor="let arrest of FilteredArrests | orderBy:key:reverse | paginate:{itemsPerPage:5,currentPage:p}">
                               <td>
                                  <div class="media align-items-center">
                                     <div class="media-body text-white text-left ml-3">
@@ -389,19 +401,31 @@
       </div>
    </div>
 
-    <!--IF no Data-->
- <ng-template #noData>
-   <tbody>
-      <tr>
-         <td colspan="8">
-            No data availabe in this table
-         </td>
-      </tr>
-   </tbody>
-</ng-template>
-
-<ng-template #Loader>
-   <img src="../../../../assets/Images/page-load-loader.gif">
-</ng-template>
+   <!--IF no Data-->
+   <ng-template #noData>
+      <tbody>
+         <tr>
+            <td colspan="8">
+               No data availabe in this table
+            </td>
+         </tr>
+      </tbody>
+   </ng-template>
 
 </div>
+
+<ng-template #Loader>
+   <section class="sign-in-page">
+      <div class="container">
+         <div class="row justify-content-center align-items-center height-self-center">
+            <div class="col-lg-5 col-md-12 align-self-center">
+               <div class="sign-in-page-data">
+                  <div class="sign-in-from w-100 m-auto pull-right">
+                     <img src="../../../../assets/Images/page-load-loader.gif">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</ng-template>

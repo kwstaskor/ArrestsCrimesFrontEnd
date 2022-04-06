@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './User';
 import { tap } from 'rxjs/operators';
@@ -16,15 +16,15 @@ export class AuthService {
 
   userLogin(user:User) {
     var reqHeader = new HttpHeaders({ "Content-Type": "application/json" });
-    return this.http.post(this.baseUrl+"/Login" , user, { headers: reqHeader }).pipe(tap(() => {
-      this.signedin = true;
+    return this.http.post(this.baseUrl+"/login" , user, { headers: reqHeader }).pipe(tap(() => {
+      this.signedin = false;
     }));
   }
 
   userRegister(user:User) {
     var reqHeader = new HttpHeaders({ "Content-Type": "application/json" });
-    return this.http.post(this.baseUrl+"/Register" , user, { headers: reqHeader }).pipe(tap(() => {
-      this.signedin = true;
+    return this.http.post(this.baseUrl+"/register" , user, { headers: reqHeader }).pipe(tap(() => {
+      this.signedin = false;
     }));
   }
  

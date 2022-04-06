@@ -1,0 +1,21 @@
+export interface Victim{
+    measure:string,
+    ethnicity:string,
+    ethnicityType:string,
+    time:string,
+    timeType:string,
+    geography:string,
+    geographyType:string,
+    geographyCode:string,
+    gender:string,
+    age:string,
+    socioEconomicClassification:string,
+    householdIncome:string,
+    value:number,
+    valueType:string,
+    sampleSize:number,
+    standardError:number,
+    lowerCi:number,
+    upperCi:number,
+    Id:number
+}

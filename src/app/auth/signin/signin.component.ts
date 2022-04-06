@@ -22,6 +22,7 @@ export class SigninComponent implements OnInit {
   });
 
   isLoginError: boolean = false;
+  playLoader!:boolean;
 
   constructor(private authService: AuthService, private router: Router) {
   }
@@ -31,12 +32,14 @@ export class SigninComponent implements OnInit {
   
   token!:string
   onSubmit(userName: any, password: any) {
+  this.playLoader = true;
    let user = <User>{};
    user.Email = userName;
    user.Password = password;
     this.authService.userLogin(user).subscribe((data: any) => {
       this.token = data.token
       if(this.token){
+        this.playLoader = false;
         localStorage.setItem('userToken', this.token);
             this.router.navigate(['/Arrests'])
             .then(() => {
@@ -44,6 +47,7 @@ export class SigninComponent implements OnInit {
             });
       }
     }, (err: HttpErrorResponse) => {
+      this.playLoader = false;
       this.isLoginError = true;
     });
   }

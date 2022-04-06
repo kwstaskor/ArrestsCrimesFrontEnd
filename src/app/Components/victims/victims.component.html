@@ -1,0 +1,372 @@
+<div id="content-page" class="content-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-6 col-xl-3">
+                        <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                            <div class="iq-card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="iq-cart-text text-capitalize">
+                                        <p class="mb-0">
+                                            Total Victims {{year}} 
+                                        </p>
+                                    </div>
+                                    <div class="icon iq-icon-box-top rounded-circle bg-primary">
+                                        <i class="las la-users"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mt-3">
+                                    <h4 class=" mb-0">{{currentYearVictims}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-6 col-xl-3">
+                        <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                            <div class="iq-card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="iq-cart-text text-capitalize">
+                                        <p class="mb-0 font-size-14">
+                                            Total Victims {{year}} 16+
+                                        </p>
+                                    </div>
+                                    <div class="icon iq-icon-box-top rounded-circle bg-warning">
+                                        <i class="las la-users"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mt-3">
+                                    <h4 class=" mb-0">{{SixteenPlus | number}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-6 col-xl-3">
+                        <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                            <div class="iq-card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="iq-cart-text text-capitalize">
+                                        <p class="mb-0 font-size-14">
+                                            Total Male {{year}}
+                                        </p>
+                                    </div>
+                                    <div class="icon iq-icon-box-top rounded-circle bg-info">
+                                        <i class="lar la-user"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mt-3">
+                                    <h4 class=" mb-0">{{totalMale2018}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-6 col-xl-3">
+                        <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                            <div class="iq-card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="iq-cart-text text-uppercase">
+                                        <p class="mb-0 font-size-14">
+                                            Total Female {{year}}
+                                        </p>
+                                    </div>
+                                    <div class="icon iq-icon-box-top rounded-circle bg-pink">
+                                        <i class="lar la-user"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mt-3">
+                                    <h4 class=" mb-0">{{totalFemale2018}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="iq-card mt-5">
+                    <div class="iq-card-header d-flex justify-content-between align-items-center">
+                        <div class="iq-header-title">
+                            <h4 class="card-title">Victims by House Income {{year}} </h4>
+                        </div>
+                        <div id="topRated-item-slick-arrow" class="slick-aerrow-block"></div>
+                    </div>
+                    <div class="iq-card-body">
+                        <ul ngClass="topRated" class="list-unstyled row mb-0">
+                            <li *ngFor="let victim of VictimsByHouseHoldIncome "
+                                class="col-sm-6 col-lg-4 col-xl-3 iq-rated-box">
+                                <div class="iq-card mb-0">
+                                    <div class="iq-card-body p-0">
+                                        <div class="iq-feature-list">
+                                            <h6 class="font-weight-600 mb-0"><i
+                                                    class="las la-landmark">&nbsp;</i>{{victim.householdIncome}}</h6>
+                                            <p class="mb-0 mt-2"><i class="fa fa-star text-primary"></i>
+                                                {{victim.value}}
+                                            </p>
+                                            <div class="d-flex align-items-center my-2">
+                                                <p class="mb-0 mr-2"><i class="lar la-user mr-1"></i>{{victim.age}}
+                                                </p>
+                                                <p class="mb-0 "><i
+                                                        class="las la-calendar-times ml-2"></i>{{victim.time}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+        <div class="row">
+            <div class="col-sm-12  col-lg-4">
+                <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                    <div class="iq-card-header d-flex align-items-center justify-content-between">
+                        <div class="iq-header-title">
+                            <h4 class="card-title">Victims By Gender {{year}}</h4>
+                        </div>
+                    </div>
+                    <div class="iq-card-body p-0">
+
+                        <div id="view-chart-02"></div>
+                        <div class="text-center">
+                            <p><i class='las la-user text-info'>&nbsp;</i><small class="text-info">Male</small></p>
+                            <p><i class='las la-user text-pink'>&nbsp;</i><small class="text-pink">Female</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="iq-card iq-card iq-card-block iq-card-stretch iq-card-height">
+                    <div class="iq-card-header">
+                        <div class="iq-header-title">
+                            <h4 class="card-title text-center">Victims by Age {{year}}</h4>
+                        </div>
+                    </div>
+                    <div class="iq-card-body pb-0">
+
+                        <div id="view-chart-01">
+
+                        </div>
+
+                        <div class="row mt-1">
+                            <div class="col-sm-6 col-md-3 col-lg-6 iq-user-list">
+                                <div class="iq-card">
+                                    <div class="iq-card-body">
+                                        <div class="media align-items-center">
+                                            <div class="iq-user-box bg-primary"></div>
+                                            <div class="media-body text-white">
+                                                <p class="mb-0 font-size-14 line-height">Age <br>
+                                                    16+
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3 col-lg-6 iq-user-list">
+                                <div class="iq-card">
+                                    <div class="iq-card-body">
+                                        <div class="media align-items-center">
+                                            <div class="iq-user-box bg-warning"></div>
+                                            <div class="media-body text-white">
+                                                <p class="mb-0 font-size-14 line-height">Age <br>
+                                                    16-24
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3 col-lg-6 iq-user-list">
+                                <div class="iq-card">
+                                    <div class="iq-card-body">
+                                        <div class="media align-items-center">
+                                            <div class="iq-user-box bg-info"></div>
+                                            <div class="media-body text-white">
+                                                <p class="mb-0 font-size-14 line-height">Age<br>
+                                                    25-34
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3 col-lg-6 iq-user-list">
+                                <div class="iq-card">
+                                    <div class="iq-card-body">
+                                        <div class="media align-items-center">
+                                            <div class="iq-user-box bg-danger"></div>
+                                            <div class="media-body text-white">
+                                                <p class="mb-0 font-size-14 line-height">Age <br>
+                                                   35-44
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3 col-lg-6 iq-user-list">
+                                <div class="iq-card">
+                                    <div class="iq-card-body">
+                                        <div class="media align-items-center">
+                                            <div class="iq-user-box bg-dark"></div>
+                                            <div class="media-body text-white">
+                                                <p class="mb-0 font-size-14 line-height">Age <br>
+                                                   45-54
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3 col-lg-6 iq-user-list">
+                                <div class="iq-card">
+                                    <div class="iq-card-body">
+                                        <div class="media align-items-center">
+                                            <div class="iq-user-box bg-light"></div>
+                                            <div class="media-body text-white">
+                                                <p class="mb-0 font-size-14 line-height">Age <br>
+                                                   55-64
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3 col-lg-6 iq-user-list">
+                                <div class="iq-card">
+                                    <div class="iq-card-body">
+                                        <div class="media align-items-center">
+                                            <div class="iq-user-box bg-success"></div>
+                                            <div class="media-body text-white">
+                                                <p class="mb-0 font-size-14 line-height">Age <br>
+                                                   65-74
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3 col-lg-6 iq-user-list">
+                                <div class="iq-card">
+                                    <div class="iq-card-body">
+                                        <div class="media align-items-center">
+                                            <div class="iq-user-box bg-pink"></div>
+                                            <div class="media-body text-white">
+                                                <p class="mb-0 font-size-14 line-height">Age <br>
+                                                   75+
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="iq-card">
+                    <div class="iq-card-header d-flex justify-content-between">
+                        <div class="iq-header-title">
+                            <h4 class="card-title">List with Victims {{year}}</h4>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <select class="form-control" [(ngModel)]="year" (ngModelChange)="ReadVictims()" id="year">
+                                <option disabled="">Choose Year</option>
+                                <option>2016</option>
+                                <option>2015</option>
+                                <option>2014</option>
+                                <option>2013</option>
+                            </select>
+                        </div>
+                        <div class="iq-card-header-toolbar d-flex align-items-center seasons">
+                            <div class="iq-custom-select d-inline-block sea-epi s-margin">
+                                <div class="iq-search-bar ml-auto mb-4">
+                                    <div class="searchbox">
+                                        <input type="text" class="text search-input" placeholder="Search age..."
+                                            name="age" [(ngModel)]="age" (ngModelChange)="Search()">
+                                        <span class="search-link" href="#"><i class="ri-search-line"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="iq-card-body">
+                        <div class="table-responsive">
+                            <table class="table movie_table" style="width:100%">
+
+                                <thead>
+                                    <tr>
+                                        <th (click)="sort('householdIncome')">Household Income&nbsp;<i
+                                                class="btn-sm btn-outline-primary fa fa-sort"></i>
+                                        </th>
+                                        <th (click)="sort('ethnicity')">Ethnicity&nbsp;<i
+                                                class="btn-sm btn-outline-primary fa fa-sort"></i></th>
+                                        <th (click)="sort('gender')">Gender&nbsp;<i
+                                                class="btn-sm btn-outline-primary fa fa-sort"></i></th>
+                                        <th (click)="sort('age')">Age&nbsp;<i
+                                                class="btn-sm btn-outline-primary fa fa-sort"></i></th>
+                                        <th (click)="sort('value')">Value&nbsp;<i
+                                                class="btn-sm btn-outline-primary fa fa-sort"></i></th>
+                                        <th (click)="sort('time')">Financial Year&nbsp;<i
+                                                class="btn-sm btn-outline-primary fa fa-sort"></i></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody *ngIf="Victims && Victims.length ; else noData;">
+                                    <tr
+                                        *ngFor="let victim of FilteredVictims | orderBy:key:reverse | paginate:{itemsPerPage:5,currentPage:p}">
+                                        <td>
+                                            <i class="lar la-euro-sign"></i>
+                                            <p class="mb-0">{{victim.householdIncome}}</p>
+                                        </td>
+                                        <td>{{victim.ethnicity}}</td>
+                                        <td><i class="lar la-genderless"></i>{{victim.gender}}</td>
+                                        <td>
+                                            <i class="lar la-users "></i>{{victim.age}}
+                                        </td>
+                                        <td>{{victim.value}}</td>
+                                        <td>
+                                            <i class="lar la-calendar"></i>{{victim.time}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pull-right mt-5">
+                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--IF no Data-->
+    <ng-template #noData>
+        <tbody>
+            <tr>
+                <td colspan="8">
+                    No data availabe in this table
+                </td>
+            </tr>
+        </tbody>
+    </ng-template>
+
+</div>
+
+<ng-template #Loader>
+    <section class="sign-in-page">
+        <div class="container">
+            <div class="row justify-content-center align-items-center height-self-center">
+                <div class="col-lg-5 col-md-12 align-self-center">
+                    <div class="sign-in-page-data">
+                        <div class="sign-in-from w-100 m-auto pull-right">
+                            <img src="../../../../assets/Images/page-load-loader.gif">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</ng-template>

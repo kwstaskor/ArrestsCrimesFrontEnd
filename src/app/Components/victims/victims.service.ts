@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Arrest } from './arrest';
+import { Victim } from './victim';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ArrestsService {
-  baseUrl = environment.baseUrl + "api/v1/arrests";
+export class VictimsService {
+
+  baseUrl = environment.baseUrl + "api/v1/victims";
 
   constructor(private httpService: HttpClient) { }
   token:string|null = localStorage.getItem('userToken');
@@ -16,7 +17,7 @@ export class ArrestsService {
     headers: new HttpHeaders({ 'Authorization': `Bearer ${this.token}`})
   }
 
-  getAllArrests(year:number): Observable<Arrest[]> {
-    return this.httpService.get<Arrest[]>(this.baseUrl+year,this.httpOptions);
+  getAllVictims(year:number): Observable<Victim[]> {
+    return this.httpService.get<Victim[]>(this.baseUrl+year,this.httpOptions);
   }
 }

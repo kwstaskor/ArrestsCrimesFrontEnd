@@ -15,7 +15,8 @@ import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { SummarizeTextPipe } from './summarize-text.pipe';
-import { CrimesComponent } from './Components/crimes/crimes.component';
+import { VictimsComponent } from './Components/victims/victims.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { CrimesComponent } from './Components/crimes/crimes.component';
     ArrestsComponent,
     ErrorComponent,
     SummarizeTextPipe,
-    CrimesComponent
+    VictimsComponent,
   ],
   imports: [
     BrowserModule,

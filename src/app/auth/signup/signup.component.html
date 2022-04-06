@@ -1,6 +1,8 @@
-<!-- MainContent -->
-<section class="sign-in-page">
+
+<section class="sign-in-page" >
+
     <div class="container">
+        
         <div class="row justify-content-center align-items-center height-self-center">
             <div class="col-lg-5 col-md-12 align-self-center">
                 <div class="sign-user_card ">
@@ -39,11 +41,24 @@
                             </form>
                         </div>
                     </div>
-                   
                 </div>
             </div>
+
+            <div ng *ngIf="playLoader" else #noLoader class="justify-content-center align-items-center  position-fixed flipOutX fixed-center">
+                <div class="col-lg-5 col-md-12 align-self-center">
+                   <div class="sign-in-page-data">
+                      <div class="sign-in-from w-100 m-auto pull-right">
+                         <img src="../../../../assets/Images/page-load-loader.gif">
+                      </div>
+                   </div>
+                </div>
+             </div>
+             
         </div>
     </div>
-</section>
-<!-- MainContent End-->
 
+    <ng-template #noLoader>
+        <div></div>
+    </ng-template>
+
+</section>

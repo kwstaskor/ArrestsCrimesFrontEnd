@@ -14,16 +14,14 @@ export class ArrestsComponent implements OnInit {
 
   Arrests!: Arrest[];
   FilteredArrests!: Arrest[];
-  totalArrests!: number;
+  totalArrests: number = 4951624;
   arrestsByArea2018!: Arrest[];
 
+  //User Input Year
+  year!: number;
+
   //Arests number per year Properties
-  arrests2018!: number;
-  arrests2017!: number;
-  arrests2016!: number;
-  arrests2015!: number;
-  arrests2014!: number;
-  arrests2013!: number;
+  currentYearArrests!: number;
 
   //Arests number per gender Properties
   totalMale2018!: number;
@@ -49,7 +47,7 @@ export class ArrestsComponent implements OnInit {
   p: number = 1;
 
   //Searching property
-  time: any;
+  geography: any;
 
   constructor(private arrestsService: ArrestsService) { }
 
@@ -61,7 +59,11 @@ export class ArrestsComponent implements OnInit {
 
   ReadArrests() {
 
-    this.arrestsService.getAllArrests().subscribe((data) => {
+    if (this.year == null) {
+      this.year = 2018;
+    }
+
+    this.arrestsService.getAllArrests(this.year).subscribe((data) => {
       this.Arrests = data;
       this.FindArrestsNumberPerYear();
       this.FindArrestsNumberPerSex();
@@ -77,40 +79,38 @@ export class ArrestsComponent implements OnInit {
 
   //-------DATA MANIPULATION---------
 
-  SetFilteredArrests() {
-    this.FilteredArrests = this.Arrests.filter(x => x.gender != 'All' && x.ageGroup != 'All' && x.ageGroup != 'Unknown' && x.geography != 'All' && x.ethnicity != 'All' && x.numberOfArrests != null);
-  }
-
-
   FindArrestsNumberPerYear() {
 
-    this.arrests2018 = this.Arrests.filter(x => x.gender == 'All' && x.geography == 'All' && x.time == '2018/19' && x.ethnicity == 'All' && x.ageGroup == 'All').map(y => y.numberOfArrests)[0];
-    this.arrests2017 = this.Arrests.filter(x => x.gender == 'All' && x.geography == 'All' && x.time == '2017/18' && x.ethnicity == 'All' && x.ageGroup == 'All').map(y => y.numberOfArrests)[0];
-    this.arrests2016 = this.Arrests.filter(x => x.gender == 'All' && x.geography == 'All' && x.time == '2016/17' && x.ethnicity == 'All' && x.ageGroup == 'All').map(y => y.numberOfArrests)[0];
-    this.arrests2015 = this.Arrests.filter(x => x.gender == 'All' && x.geography == 'All' && x.time == '2015/16' && x.ethnicity == 'All' && x.ageGroup == 'All').map(y => y.numberOfArrests)[0];
-    this.arrests2014 = this.Arrests.filter(x => x.gender == 'All' && x.geography == 'All' && x.time == '2014/15' && x.ethnicity == 'All' && x.ageGroup == 'All').map(y => y.numberOfArrests)[0];
-    this.arrests2013 = this.Arrests.filter(x => x.gender == 'All' && x.geography == 'All' && x.time == '2013/14' && x.ethnicity == 'All' && x.ageGroup == 'All').map(y => y.numberOfArrests)[0];
+    this.currentYearArrests = this.Arrests.filter(x => x.gender == 'All' && x.geography == 'All' && x.ethnicity == 'All' && x.ageGroup == 'All').map(y => y.numberOfArrests)[0];
 
-    this.totalArrests = this.arrests2018 + this.arrests2017 + this.arrests2016 + this.arrests2015 + this.arrests2014 + this.arrests2013;
-    this.InitAgeChart(this.Arrests.filter(x => x.gender == 'All' && x.geography == 'All' && x.time == '2018/19' && x.ethnicity == 'All'));
-    this.InitEthnicityChart(this.Arrests.filter(x => x.gender == 'All' && x.geography == 'All' && x.time == '2018/19' && x.ageGroup == 'All'));
+    this.InitAgeChart(this.Arrests.filter(x => x.gender == 'All' && x.geography == 'All' && x.ethnicity == 'All'));
+    this.InitEthnicityChart(this.Arrests.filter(x => x.gender == 'All' && x.geography == 'All' && x.ageGroup == 'All'));
   }
 
   FindArrestsNumberPerSex() {
-    this.totalMale2018 = this.Arrests.filter(x => x.gender == 'Male' && x.geography == 'All' && x.time == '2018/19' && x.ethnicity == 'All' && x.ageGroup == 'All').map(y => y.numberOfArrests)[0];
-    this.totalFemale2018 = this.Arrests.filter(x => x.gender == 'Female' && x.geography == 'All' && x.time == '2018/19' && x.ethnicity == 'All' && x.ageGroup == 'All').map(y => y.numberOfArrests)[0];
+    this.totalMale2018 = this.Arrests.filter(x => x.gender == 'Male' && x.geography == 'All' && x.ethnicity == 'All' && x.ageGroup == 'All').map(y => y.numberOfArrests)[0];
+    this.totalFemale2018 = this.Arrests.filter(x => x.gender == 'Female' && x.geography == 'All' && x.ethnicity == 'All' && x.ageGroup == 'All').map(y => y.numberOfArrests)[0];
     this.InitGenderChart();
 
   }
 
   FindArrestsNumberPerLocation() {
-    this.arrestsByArea2018 = this.Arrests.filter(x => (x.gender == 'Male' || x.gender == 'Female') && x.geography != 'All' && x.time == '2018/19' && x.ethnicity == 'All' && x.ageGroup == 'All');
+    this.arrestsByArea2018 = this.Arrests.filter(x => (x.gender == 'Male' || x.gender == 'Female') && x.geography != 'All' && x.ethnicity == 'All' && x.ageGroup == 'All');
     this.arrestsByArea2018 = this.arrestsByArea2018.sort((a, b) => { if (a.numberOfArrests < 0) { return -1; } if (b.numberOfArrests < 0) { return 1; } return b.numberOfArrests - a.numberOfArrests });
+  }
+
+  SetFilteredArrests() {
+    this.FilteredArrests = this.Arrests.filter(x => x.gender != 'All' && x.ageGroup != 'All' && x.ageGroup != 'Unknown' && x.geography != 'All' && x.ethnicity != 'All' && x.numberOfArrests != null);
   }
 
   //-------SLIDER---------
 
   slider() {
+
+    if (jQuery('.topRated').hasClass('slick-initialized')) {
+      jQuery('.topRated').slick('destroy');
+    }
+
     jQuery(".topRated").not('.slick-initialized').slick({
       slidesToShow: 4,
       speed: 300,
@@ -146,6 +146,7 @@ export class ArrestsComponent implements OnInit {
   //-------CHARTS---------
 
   //First Chart
+  
   InitAgeChart(data: Arrest[]) {
 
     let tenToSeventeen = data.filter(x => x.ageGroup == '10 - 17 years').map(y => y.numberOfArrests)[0];
@@ -154,10 +155,10 @@ export class ArrestsComponent implements OnInit {
     let UnderTen = data.filter(x => x.ageGroup == 'Under 10 years').map(y => y.numberOfArrests)[0];
 
     let arr: number[] = [];
-    arr.push(Math.round((tenToSeventeen / this.arrests2018) * 100));
-    arr.push(Math.round((eighteenToTwenty / this.arrests2018) * 100));
-    arr.push(Math.round((OverTwentyOne / this.arrests2018) * 100));
-    arr.push(Math.round((UnderTen / this.arrests2018) * 100));
+    arr.push(Math.round((tenToSeventeen / this.currentYearArrests) * 100));
+    arr.push(Math.round((eighteenToTwenty / this.currentYearArrests) * 100));
+    arr.push(Math.round((OverTwentyOne / this.currentYearArrests) * 100));
+    arr.push(Math.round((UnderTen / this.currentYearArrests) * 100));
 
     this.firstChart(arr);
   }
@@ -201,11 +202,11 @@ export class ArrestsComponent implements OnInit {
   }
 
   //Second Chart
-  InitGenderChart() {
 
+  InitGenderChart() {
     let arr: number[] = [];
-    arr.push(Math.round((this.totalMale2018 / this.arrests2018) * 100));
-    arr.push(Math.round((this.totalFemale2018 / this.arrests2018) * 100));
+    arr.push(Math.round((this.totalMale2018 / this.currentYearArrests) * 100));
+    arr.push(Math.round((this.totalFemale2018 / this.currentYearArrests) * 100));
 
     this.secondChart(arr);
   }
@@ -284,16 +285,16 @@ export class ArrestsComponent implements OnInit {
     }
 
     let arr: number[] = [];
-    arr.push(Math.round((this.Asian / this.arrests2018) * 100));
-    arr.push(Math.round((this.Bangladeshi / this.arrests2018) * 100));
-    arr.push(Math.round((this.Black / this.arrests2018) * 100));
-    arr.push(Math.round((this.Chinese / this.arrests2018) * 100));
-    arr.push(Math.round((this.Indian / this.arrests2018) * 100));
-    arr.push(Math.round((this.Mixed / this.arrests2018) * 100));
-    arr.push(Math.round((this.Pakistani / this.arrests2018) * 100));
-    arr.push(Math.round((this.White / this.arrests2018) * 100));
-    arr.push(Math.round((this.AnyOther / this.arrests2018) * 100));
-    this.thirdChart(arr, this.arrests2018);
+    arr.push(Math.round((this.Asian / this.currentYearArrests) * 100));
+    arr.push(Math.round((this.Bangladeshi / this.currentYearArrests) * 100));
+    arr.push(Math.round((this.Black / this.currentYearArrests) * 100));
+    arr.push(Math.round((this.Chinese / this.currentYearArrests) * 100));
+    arr.push(Math.round((this.Indian / this.currentYearArrests) * 100));
+    arr.push(Math.round((this.Mixed / this.currentYearArrests) * 100));
+    arr.push(Math.round((this.Pakistani / this.currentYearArrests) * 100));
+    arr.push(Math.round((this.White / this.currentYearArrests) * 100));
+    arr.push(Math.round((this.AnyOther / this.currentYearArrests) * 100));
+    this.thirdChart(arr, this.currentYearArrests);
   }
 
   thirdChart(series: any, total: number) {
@@ -364,17 +365,20 @@ export class ArrestsComponent implements OnInit {
   key: any;
   reverse: boolean = false;
   sort(key: any) {
+
     this.key = key;
     this.reverse = !this.reverse;
+
   }
 
   Search() {
-    if (this.time) {
+
+    if (this.geography) {
       this.FilteredArrests = this.FilteredArrests.filter(x =>
-        x.time.toUpperCase().includes(this.time.toUpperCase())
+        x.geography.toUpperCase().includes(this.geography.toUpperCase())
       );
     } else {
-      window.location.reload();
+      this.FilteredArrests = this.Arrests.filter(x => x.gender != 'All' && x.ageGroup != 'All' && x.ageGroup != 'Unknown' && x.geography != 'All' && x.ethnicity != 'All' && x.numberOfArrests != null);
     }
   }
 
